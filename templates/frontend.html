@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<title>Product Searcher</title>
+  </head>
+  <body>
+	<div class="mx-auto" style="width: 650px; margin-top: 150px !important;">
+		<form>
+			<div class="form-row align-items-center">
+				<div class="col-auto">
+					<input type="text" class="form-control mb-2" placeholder="Type your product here" name="product" required>
+				</div>
+				<div class="form-group" style="margin-top: 40px;">
+					<label for="websites">Select websites to search</label>
+					<select multiple class="form-control" id="websites" name="website">
+						<option value="amazon">Amazon</option>
+						<option value="ebay">ebay</option>
+					</select>
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-2">Search</button>
+				</div>
+			</div>
+		</form>
+	</div>
+		<div class="accordion" id="accordion-websites">
+			{% if 'amazon' in websites %}
+			<div class="card">
+				<div class="card-header" id="heading-amazon">
+					<h2 class="mb-0">
+						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-amazon" aria-expanded="false" aria-controls="collapse-amazon">
+							Amazon
+						</button>
+					</h2>
+				</div>
+				<div id="collapse-amazon" class="collapse" aria-labelledby="heading-amazon" data-parent="#accordion-websites">
+					<div class="card-body">
+						{{ results.amazon|safe }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% if 'ebay' in websites %}
+			<div class="card">
+				<div class="card-header" id="heading-ebay">
+					<h2 class="mb-0">
+						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-ebay" aria-expanded="false" aria-controls="collapse-ebay">
+							ebay
+						</button>
+					</h2>
+				</div>
+				<div id="collapse-ebay" class="collapse" aria-labelledby="heading-ebay" data-parent="#accordion-websites">
+					<div class="card-body">
+						{{ results.ebay|safe }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
